@@ -1,5 +1,10 @@
 class ProjectsController < ApplicationController
-    belongs_to :user
+
+    def index
+        @user = User.find(session[:user_id])
+    end
+
+    private
 
 
 end
