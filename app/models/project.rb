@@ -1,6 +1,6 @@
-class CreateProject < ApplicationRecord
+class Project < ApplicationRecord
     belongs_to :user
 
 
-    
+
 end
