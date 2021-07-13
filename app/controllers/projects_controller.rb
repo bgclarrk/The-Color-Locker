@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
     before_action :find_project, only: [:index, :edit, :update, :show, :destroy]
 
     def index
-        @projects = Projects.all
+        @projects = Project.all
     end
 
     def new
@@ -11,7 +11,9 @@ class ProjectsController < ApplicationController
 
     def create
         project = Project.create(project_params)
-        project.user = User.find_by(session[:user_id]) #Need to create helper method
+        project.user = User.find_by_id(session[:user_id]) #Need to create helper method
+        project.save
+        redirect_to project_path(project)
     end
 
     def edit
@@ -40,7 +42,8 @@ class ProjectsController < ApplicationController
     private
     
     def project_params
-        params.require(:project).permit(:title, :description, :user_id)
+        byebug
+        params.require(:project).permit(:title, :description, :user_id) #There is an issue with this method
     end
     
     def find_project
