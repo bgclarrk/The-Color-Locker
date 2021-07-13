@@ -1,8 +1,7 @@
 class ProjectsController < ApplicationController
-    before_action :find_project, only: [:index, :edit, :show, :destroy]
+    before_action :find_project, only: [:index, :edit, :update, :show, :destroy]
 
     def index
-        @user = User.find(session[:user_id]) # Need to abstract out
         @projects = Projects.all
     end
 
@@ -11,7 +10,8 @@ class ProjectsController < ApplicationController
     end
 
     def create
-
+        project = Project.create(project_params)
+        project.user = User.find_by(session[:user_id]) #Need to create helper method
     end
 
     def edit
@@ -19,7 +19,14 @@ class ProjectsController < ApplicationController
     end
 
     def update
-
+        if session[:user_id] == @project.user_id
+            @project.title = params[:project][:title]
+            @project.description = params[:project][:description]
+            @project.save
+            redirect_to project_path(@project)
+        else
+            render edit_project_path(@project) #Need to add error
+        end
     end
 
     def show
@@ -27,13 +34,13 @@ class ProjectsController < ApplicationController
     end
     
     def destroy
-        
+        @project.destroy
     end
     
     private
     
     def project_params
-        params.require(:projects).permit(:title, :description, :user_id)
+        params.require(:project).permit(:title, :description, :user_id)
     end
     
     def find_project
