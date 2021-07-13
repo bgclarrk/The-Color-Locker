@@ -14,7 +14,7 @@
             <h4><%= project.title %></h4>
             <p><%= project.created_at_formatted %></p>
             <p><%= project.description %></p>
-            <%= link_to "Edit", edit_project_path(@project) %>
+            <%= link_to "Edit", edit_project_path(project) %>
         </div>
     <% end %>
 </div>
