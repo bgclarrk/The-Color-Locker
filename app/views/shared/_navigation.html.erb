@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">The Color Locker</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -6,15 +6,30 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="<%= projects_path %>">All Projects</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<%= new_project_path %>">New Project</a>
-        </li>
+        <% if session[:user_id] %>
+            <li class="nav-item">
+                <a class="nav-link" href="<%= projects_path %>">All Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<%= new_project_path %>">New Project</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">All Palettes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">New Palette</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<%= logout_path %>">Logout</a>
+            </li>
+        <% else %>
+            <li class="nav-item">
+                <a class="nav-link" href="<%= signup_path %>">Signup</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<%= login_path %>">Login</a>
+            </li>
+        <% end %>
     </ul>
-    <form class="form-inline my-2 my-lg-0 align-right">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
-    </form>
     </div>
 </nav>

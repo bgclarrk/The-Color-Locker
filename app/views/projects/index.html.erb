@@ -5,16 +5,18 @@
 </div>
 <div class="row">
     <div class="col-lg-12 text-center">
-        <h3>Here are your current projects:</h3>
+        <h3>Here are your current projects</h3>
     </div>
 </div>
 <div class="row">
     <% @projects.each do |project| %>
-        <div class="col-lg-4">
-            <h4><%= project.title %></h4>
-            <p><%= project.created_at_formatted %></p>
-            <p><%= project.description %></p>
-            <%= link_to "Edit", edit_project_path(project) %>
+        <div class="card" style="width: 27rem;">
+            <div class="card-body">
+                <h5 class="card-title"><%= project.title %></h5>
+                <p class="card-text"><%= project.description %></p>
+                <a href="<%= project_path(project) %>" class="card-link">View</a>
+                <a href="<%= edit_project_path(project) %>" class="card-link">Edit</a>
+            </div>
         </div>
     <% end %>
 </div>

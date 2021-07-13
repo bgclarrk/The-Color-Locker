@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+    before_action :authenticated?
     before_action :find_project, only: [:index, :edit, :update, :show, :destroy]
 
     def index
