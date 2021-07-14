@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12 text-center">
-        <h1>Welcome back!</h1>
+        <h1>Welcome back <%= User.find_by_id(session[:user_id]).username %>!</h1>
     </div>
 </div>
 <div class="row">
