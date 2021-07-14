@@ -43,8 +43,7 @@ class ProjectsController < ApplicationController
     private
     
     def project_params
-        byebug
-        params.require(:project).permit(:title, :description, :user_id) #There is an issue with this method
+        params.require(:project).permit(:title, :description, :user_id)
     end
     
     def find_project

@@ -16,8 +16,6 @@ ActiveRecord::Schema.define(version: 2021_07_14_014151) do
     t.string "subject"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "project_id"
-    t.index ["project_id"], name: "index_categories_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
