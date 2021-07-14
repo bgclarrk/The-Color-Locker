@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-12 text-center">
-        <h1>Create Category</h1>
+        <h1>Create Palette</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-12">
-        <%= form_for @category do |f| %>
-            <%= f.text_field :subject, placeholder: "Category Subject", class: "form-control" %>
+        <%= form_for @palette do |f| %>
+            <%= f.text_field :name, placeholder: "Palette Name", class: "form-control" %>
             <br>
             <div class="text-center">
                 <%= f.submit class: "btn btn-primary" %>

@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_14_014151) do
+ActiveRecord::Schema.define(version: 2021_07_14_200905) do
 
-  create_table "categories", force: :cascade do |t|
-    t.string "subject"
+  create_table "palettes", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_palettes_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -24,6 +26,8 @@ ActiveRecord::Schema.define(version: 2021_07_14_014151) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "palette_id"
+    t.index ["palette_id"], name: "index_projects_on_palette_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -35,4 +39,5 @@ ActiveRecord::Schema.define(version: 2021_07_14_014151) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "projects", "palettes"
 end
