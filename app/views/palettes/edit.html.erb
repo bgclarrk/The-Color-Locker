@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <h1>Edit Palette</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <%= form_for @palette do |f| %>
+            <%= f.text_field :name, placeholder: @palette.name, class: "form-control" %>
+            <br>
+            <div class="text-center">
+                <%= f.submit class: "btn btn-primary" %>
+            </div>
+        <% end %>
+    </div>
+</div>

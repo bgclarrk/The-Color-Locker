@@ -7,9 +7,21 @@
     <% @palettes.each do |palette| %>
         <div class="card" style="width: 27rem;">
             <div class="card-body">
-                <h5 class="card-title"><%= pallete.name %></h5>
+                <h5 class="card-title"><%= palette.name %></h5>
                 <a href="<%= palette_path(palette) %>" class="card-link">View</a>
                 <a href="<%= edit_palette_path(palette) %>" class="card-link">Edit</a>
+                <div class="Container">
+                <h6 class="card-title">Projects:</h6>
+                    <% if palette.projects.present? %>
+                        <ul>
+                            <% palette.projects.each do |project| %>
+                                <li><%= link_to project.title, project_path(project) %></li>
+                            <% end %>
+                        </ul>
+                    <% else %>
+                        No projects currently assigned.
+                    <% end %>
+                </div>
             </div>
         </div>
     <% end %>
