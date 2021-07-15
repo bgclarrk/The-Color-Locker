@@ -4,32 +4,51 @@
         <p><%= @palette.created_at_formatted %></p>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12">
-        <h4>Current colors:</h4>
+<% if @palette.colors.present? %>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h4>Colors</h4>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <h4>Current projects:</h4>
-    </div>
-</div>
-<div class="row">
-    <% @palette.projects.each do |project| %>
-        <div class="card" style="width: 27rem;">
-            <div class="card-body">
-                <h5 class="card-title"><%= project.title %></h5>
-                <p class="card-text"><%= project.description %></p>
-                <div class="row">
-                    <div class="col-8 text-left">
-                        <a href="<%= project_path(project) %>" class="card-link">View</a>
-                        <a href="<%= edit_project_path(project) %>" class="card-link">Edit</a>
-                    </div>
-                    <div class="col-4 text-right">
-                        <%= @palette.name %>
+    <div class="row">
+        <% @palette.projects.each do |project| %>
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <a href="<%= project_path(project) %>" class="card-link">View</a>
+                        </div>
                     </div>
                 </div>
             </div>
+        <% end %>
+    </div>
+<% else %>
+    <p>There are no colors assigned to this palette yet.</p>
+<% end %>
+<% if @palette.projects.present? %>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h6>Current projects using this palette</h6>
         </div>
-    <% end %>
-</div>
+    </div>
+    <div class="row">
+        <% @palette.projects.each do |project| %>
+            <div class="card" style="width: 27rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><%= project.title %></h5>
+                    <p class="card-text"><%= project.description %></p>
+                    <div class="row">
+                        <div class="col-8 text-left">
+                            <a href="<%= project_path(project) %>" class="card-link">View</a>
+                            <a href="<%= edit_project_path(project) %>" class="card-link">Edit</a>
+                        </div>
+                        <div class="col-4 text-right">
+                            <%= @palette.name %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>

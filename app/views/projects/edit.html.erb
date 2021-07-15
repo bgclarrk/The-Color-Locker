@@ -16,3 +16,10 @@
         <% end %>
     </div>
 </div>
+<div class="row">
+    <div class="col-12 text-center">
+        <%= form_tag project_path(@project), method: "delete" do %>
+            <%= submit_tag "Delete Project", class: "btn btn-outline-danger" %>
+        <% end %>
+    </div>
+</div>

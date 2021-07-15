@@ -11,10 +11,14 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        project = Project.create(project_params)
-        project.user = User.find_by_id(session[:user_id]) #Need to create helper method
-        project.save
-        redirect_to project_path(project)
+        @project = Project.create(project_params)
+        @project.user = User.find_by_id(session[:user_id]) #Need to create helper method
+        byebug
+        if @project.save
+            redirect_to project_path(@project)
+        else
+            render new_project_path
+        end
     end
 
     def edit
@@ -38,6 +42,7 @@ class ProjectsController < ApplicationController
     
     def destroy
         @project.destroy
+        redirect_to projects_path
     end
     
     private

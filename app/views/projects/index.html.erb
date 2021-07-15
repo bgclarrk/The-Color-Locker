@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-4 text-right">
                         <% if project.palette.present? %>
-                            <%= link_to project.palette.name, palette_path(project.palette) %>
+                            <%= link_to project.palette.name, palette_path(project.palette), data: { confirm: "Are you sure?" } %>
                         <% else %>
                             (No Palette)
                         <% end %>

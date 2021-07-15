@@ -14,7 +14,7 @@ class PalettesController < ApplicationController
         @palette.name = params[:palette][:name]
         @palette.user = current_user
         if @palette.save
-            redirect_to palette_path
+            redirect_to palette_path(@palette)
         else
             render new_palette_path #need to add flash error
         end
@@ -34,6 +34,7 @@ class PalettesController < ApplicationController
 
     def destroy
         @palette.destroy
+        redirect_to palettes_path
     end
 
     private
