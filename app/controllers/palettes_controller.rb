@@ -1,5 +1,5 @@
 class PalettesController < ApplicationController
-    before_action :find_palette, only: [:show, :edit, :update, :destroy]
+    before_action :find_palette_by_id, only: [:show, :edit, :update, :destroy]
     
     def index
         @palettes = Palette.all
@@ -29,7 +29,13 @@ class PalettesController < ApplicationController
     end
 
     def update
-
+        if session[:user_id] == @palette.user_id
+            @palette.name = params[:palette][:name]
+            @palette.save
+            redirect_to palette_path(@palette)
+        else
+            render edit_palette_path(@palette) #Need to add error
+        end
     end
 
     def destroy
@@ -43,7 +49,7 @@ class PalettesController < ApplicationController
         params.require(:palette).permit(:name, :project_id)
     end
 
-    def find_palette
+    def find_palette_by_id
         @palette = Palette.find_by_id(params[:id])
     end
 

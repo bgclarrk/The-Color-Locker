@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :authenticated?
-    before_action :find_project, only: [:index, :edit, :update, :show, :destroy]
+    before_action :find_project_by_id, only: [:edit, :update, :show, :destroy]
 
     def index
         @projects = Project.all
@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
         params.require(:project).permit(:title, :description, :user_id, :pallete_id)
     end
     
-    def find_project
+    def find_project_by_id
         @project = Project.find_by_id(params[:id])
     end
 

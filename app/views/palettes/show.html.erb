@@ -24,7 +24,8 @@
         <% end %>
     </div>
 <% else %>
-    <p>There are no colors assigned to this palette yet.</p>
+    <p class="text-center">There are no colors currently assigned to this palette yet.</p>
+    <p class="text-center"><%= link_to "Edit Palette", edit_palette_path(@palette) %></p>
 <% end %>
 <% if @palette.projects.present? %>
     <div class="row">
