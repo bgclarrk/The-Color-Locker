@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
         if @project.save
             redirect_to project_path(@project)
         else
+            flash[:alert] = "There was an issue creating this project. Please try again."
             render new_project_path
         end
     end
@@ -32,7 +33,8 @@ class ProjectsController < ApplicationController
             @project.save
             redirect_to project_path(@project)
         else
-            render edit_project_path(@project) #Need to add error
+            flash[:alert] = "There was an issue updating this palette. Please try again."
+            render edit_project_path(@project)
         end
     end
 

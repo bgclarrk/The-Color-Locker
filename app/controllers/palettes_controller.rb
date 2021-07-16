@@ -16,7 +16,8 @@ class PalettesController < ApplicationController
         if @palette.save
             redirect_to palette_path(@palette)
         else
-            render new_palette_path #need to add flash error
+            flash[:alert] = "There was an issue creating this palette. Please try again."
+            render new_palette_path
         end
     end
 
@@ -34,6 +35,7 @@ class PalettesController < ApplicationController
             @palette.save
             redirect_to palette_path(@palette)
         else
+            flash[:alert] = "There was an issue updating this palette. Please try again."
             render edit_palette_path(@palette) #Need to add error
         end
     end

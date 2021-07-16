@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :projects
   resources :palettes
-  resources :colors
+
+  resources :palettes, only: [:show, :index] do
+    resources :colors, only: [:new, :create, :show, :edit, :update, :destroy]
+  end
   
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'

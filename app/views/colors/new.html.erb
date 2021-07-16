@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <h1>Select colors for <%= @color.palette.name %></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <%= form_for @color, url: palette_colors_path do |f| %>
+            <div class="text-center">
+                <%= f.color_field :hexidecimal, value: "#2668E3" %>
+                <%= f.color_field :hexidecimal, value: "#21206F" %>
+                <%= f.color_field :hexidecimal, value: "#F2F2F2" %>
+                <%= f.color_field :hexidecimal, value: "#3835E9" %>
+                <%= f.color_field :hexidecimal, value: "#679FF9" %>
+            </div>
+            <br>
+            <div class="text-center">
+                <%= f.submit class: "btn btn-primary" %>
+            </div>
+        <% end %>
+    </div>
+</div>
