@@ -1,5 +1,5 @@
 class ColorsController < ApplicationController
-    before_action :find_color_by_id, only: [:show, :edit, :update, :destroy]
+    before_action :find_color_by_id, only: [:edit, :update]
 
     def new
         if Palette.find_by_id(params[:palette_id])
@@ -12,23 +12,16 @@ class ColorsController < ApplicationController
     end
 
     def create
-        @color = Color.new
-        @color.hexidecimal = params[:color][:hexidecemal]
-        if @color.palette = assign_palette_to_color
-            if @color.save
-                redirect_to palette_color_path(@color, @color.palette)
-            else
-                flash[:alert] = "There was an issue creating this color. Please try again."
-                render new_palette_color_path(@color.palette)
+        if Palette.find_by_id(params[:palette_id])
+            params[:color][:hexidecimal].each do |color|
+                color = Color.new(hexidecimal: color, palette_id: params[:palette_id])
+                color.save
             end
+            redirect_to palette_path(params[:palette_id])
         else
             flash[:alert] = "We could not find that palette. Please try again."
             render palettes_path
         end
-    end
-
-    def show
-
     end
 
     def edit
@@ -37,11 +30,6 @@ class ColorsController < ApplicationController
 
     def update
 
-    end
-
-    def destroy
-        @color.destroy
-        redirect_to new_color_path
     end
 
     private

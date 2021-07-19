@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :palettes
 
   resources :palettes, only: [:show, :index] do
-    resources :colors, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :colors, only: [:new, :create, :edit, :update]
   end
   
   get '/signup', to: 'users#new'

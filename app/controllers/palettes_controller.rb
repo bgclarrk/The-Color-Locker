@@ -14,7 +14,7 @@ class PalettesController < ApplicationController
         @palette.name = params[:palette][:name]
         @palette.user = current_user
         if @palette.save
-            redirect_to palette_path(@palette)
+            redirect_to @palette
         else
             flash[:alert] = "There was an issue creating this palette. Please try again."
             render new_palette_path
