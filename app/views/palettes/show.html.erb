@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         <% @palette.colors.each do |color| %>
-            <div class="card" style="width: 15rem;">
+            <div class="card" style="width: 16.5rem;">
                 <div class="card-body">
                     <h5 class="card-title text-center"><%= color.hexidecimal %></h5>
                     <div class="row text-center">
@@ -26,8 +26,9 @@
     </div>
 
 <% else %>
-    <p class="text-center">There are no colors currently assigned to this palette yet.</p>
     <p class="text-center"><%= link_to "Edit Palette", edit_palette_path(@palette) %></p>
+    <p class="text-center">There are no colors currently assigned to this palette yet.</p>
+    <p class="text-center"><%= link_to "Add Colors", new_palette_color_path(@palette) %></p>
 <% end %>
 <% if @palette.projects.present? %>
     <div class="row">
