@@ -11,18 +11,20 @@
         </div>
     </div>
     <div class="row">
-        <% @palette.projects.each do |project| %>
-            <div class="card" style="width: 20rem;">
+        <% @palette.colors.each do |color| %>
+            <div class="card" style="width: 15rem;">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <a href="<%= project_path(project) %>" class="card-link">View</a>
-                        </div>
+                    <h5 class="card-title text-center"><%= color.hexidecimal %></h5>
+                    <div class="row text-center">
+                        <a href="<%= edit_palette_color_path(@palette, color) %>" class="card-link">Edit</a>
+                    </div>
+                    <div class="card" style="height: 5rem; background-color: <%= color.hexidecimal %>;">
                     </div>
                 </div>
             </div>
         <% end %>
     </div>
+
 <% else %>
     <p class="text-center">There are no colors currently assigned to this palette yet.</p>
     <p class="text-center"><%= link_to "Edit Palette", edit_palette_path(@palette) %></p>

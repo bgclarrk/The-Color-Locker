@@ -22,7 +22,7 @@ class PalettesController < ApplicationController
     end
 
     def show
-
+        
     end
 
     def edit

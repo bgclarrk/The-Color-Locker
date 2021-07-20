@@ -29,7 +29,20 @@ class ColorsController < ApplicationController
     end
 
     def update
-
+        if color = Color.find_by_id(params[:palette_id]) && Palette.find_by_id(params[:palette_id])
+                if color.palette_id = params[:palette_id]
+                color.hexidecimal = params[:color][:hexidecimal]
+                color.save
+                redirect_to palette_path(params[:palette_id])
+                else
+                    flash[:alert] = "There was an error. Please try again."
+                    render palettes_path
+                end
+            end
+        else
+            flash[:alert] = "We could not find that palette. Please try again."
+            render palettes_path
+        end
     end
 
     private
