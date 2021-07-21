@@ -8,12 +8,15 @@
         <%= form_for @palette do |f| %>
             <%= f.text_field :name, placeholder: @palette.name, class: "form-control" %>
             <br>
+            <%= f.collection_select :project_ids, Project.all, :id, :title, {label: 'Project', :include_blank => ("Select Project"), hide_label: true}, {class: "dropdown menu"} %>
+            <br>
             <div class="text-center">
                 <%= f.submit class: "btn btn-primary" %>
             </div>
         <% end %>
     </div>
 </div>
+<br>
 <div class="row">
     <div class="col-12 text-center">
         <%= form_tag palette_path(@palette), method: "delete" do %>
