@@ -1,0 +1,10 @@
+<br>
+<h1 class="text-center"><%= @color.hexidecimal %></h1>
+<div style="height: 500px; background-color: <%= @color.hexidecimal %>; border-radius: 35px;">
+</div>
+<br>
+<div class="row">
+    <div class="col-12 text-center">
+        <%= link_to "Go back", palette_path(@color.palette) %>
+    </div>
+</div>

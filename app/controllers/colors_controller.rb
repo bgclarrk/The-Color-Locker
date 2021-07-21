@@ -1,6 +1,6 @@
 class ColorsController < ApplicationController
     before_action :authenticated?
-    before_action :find_color_by_id, only: [:edit, :update]
+    before_action :find_color_by_id, only: [:edit, :update, :show]
 
     def new
         if Palette.find_by_id(params[:palette_id])
@@ -43,6 +43,10 @@ class ColorsController < ApplicationController
             flash[:alert] = "We could not find that palette. Please try again."
             redirect_to palettes_path
         end
+    end
+
+    def show
+
     end
 
     private
