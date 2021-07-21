@@ -4,36 +4,51 @@
     </div>
 </div>
 <br>
-<div class="row">
-    <div class="col-lg-12 text-center">
-        <h3>Here are your current projects</h3>
+<% if !@projects.present? %>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h3>Here are your current projects</h3>
+        </div>
     </div>
-</div>
-<br>
-<div class="row">
-    <% @projects.each do |project| %>
-        <div class="card" style="width: 27rem;">
-            <div class="card-body">
-                <h5 class="card-title"><%= project.title %></h5>
-                <p class="card-text"><%= project.description %></p>
-                <div class="row">
-                    <div class="col-8 text-left">
-                        <a href="<%= project_path(project) %>" class="card-link">View</a>
-                        <a href="<%= edit_project_path(project) %>" class="card-link">Edit</a>
-                    </div>
-                    <div class="col-4 text-right">
-                        <% if project.palette.present? %>
-                            <%= link_to project.palette.name, palette_path(project.palette), data: { confirm: "Are you sure?" } %>
-                        <% else %>
-                            (No Palette)
-                        <% end %>
+    <br>
+    <div class="row">
+        <% @projects.each do |project| %>
+            <div class="card" style="width: 27rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><%= project.title %></h5>
+                    <p class="card-text"><%= project.description %></p>
+                    <div class="row">
+                        <div class="col-8 text-left">
+                            <a href="<%= project_path(project) %>" class="card-link">View</a>
+                            <a href="<%= edit_project_path(project) %>" class="card-link">Edit</a>
+                        </div>
+                        <div class="col-4 text-right">
+                            <% if project.palette.present? %>
+                                <%= link_to project.palette.name, palette_path(project.palette), data: { confirm: "Are you sure?" } %>
+                            <% else %>
+                                (No Palette)
+                            <% end %>
+                        </div>
                     </div>
                 </div>
             </div>
+        <% end %>
+    </div>
+    <br>
+<% else %>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h3>How to get started</h3>
+            <p>The first step is by creating a project using the "New Project" link in the navigation.
+            A project is for organizational purposes and should represent the project you are working on.
+            After you have a project, the next step is to create a palette.  A palette will contain all the 
+            colors being used for a single project or multiple projects that you have created.  
+            Finally, once you have a palette, you can add your colors.  You can always change the colors in
+            a palette at any time.</p>
         </div>
-    <% end %>
-</div>
-<br>
+    </div>
+    <br>
+<% end %>
 <div class="row">
     <div class="col-lg text-center">
         <%= link_to "Create a new Project", new_project_path %>
