@@ -1,4 +1,5 @@
 class ColorsController < ApplicationController
+    before_action :authenticated?
     before_action :find_color_by_id, only: [:edit, :update]
 
     def new

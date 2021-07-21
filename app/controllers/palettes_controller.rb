@@ -1,4 +1,5 @@
 class PalettesController < ApplicationController
+    before_action :authenticated?
     before_action :find_palette_by_id, only: [:show, :edit, :update, :destroy]
     
     def index
