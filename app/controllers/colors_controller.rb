@@ -30,9 +30,7 @@ class ColorsController < ApplicationController
     end
 
     def update
-        byebug
         if color = Color.find_by_id(params[:id])
-            byebug
             if color.palette_id == Palette.find_by_id(params[:palette_id]).id
                 color.hexidecimal = params[:color][:hexidecimal]
                 color.save

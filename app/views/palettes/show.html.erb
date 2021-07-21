@@ -4,12 +4,14 @@
         <p><%= @palette.created_at_formatted %></p>
     </div>
 </div>
+<br>
 <% if @palette.colors.present? %>
     <div class="row">
         <div class="col-lg-12 text-center">
             <h4>Colors</h4>
         </div>
     </div>
+    <br>
     <div class="row">
         <% @palette.colors.each do |color| %>
             <div class="card" style="width: 16.5rem;">
@@ -18,24 +20,26 @@
                     <div class="row text-center">
                         <a href="<%= edit_palette_color_path(@palette, color) %>" class="card-link">Edit</a>
                     </div>
+                    <br>
                     <div class="card" style="height: 5rem; background-color: <%= color.hexidecimal %>;">
                     </div>
                 </div>
             </div>
         <% end %>
     </div>
-
 <% else %>
     <p class="text-center"><%= link_to "Edit Palette", edit_palette_path(@palette) %></p>
     <p class="text-center">There are no colors currently assigned to this palette yet.</p>
     <p class="text-center"><%= link_to "Add Colors", new_palette_color_path(@palette) %></p>
 <% end %>
+<br>
 <% if @palette.projects.present? %>
     <div class="row">
         <div class="col-lg-12 text-center">
             <h6>Current projects using this palette</h6>
         </div>
     </div>
+    <br>
     <div class="row">
         <% @palette.projects.each do |project| %>
             <div class="card" style="width: 27rem;">
