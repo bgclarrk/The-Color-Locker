@@ -5,11 +5,18 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = User.find_by(username: params[:user][:username])
-        return head(:forbidden) unless user.authenticate(params[:user][:password])
-        session[:user_id] = user.id
-
-        redirect_to '/projects'
+        if user = User.find_by(username: params[:user][:username])
+            if user.authenticate(params[:user][:password])
+                session[:user_id] = user.id
+                redirect_to '/projects'
+            else
+                flash[:alert] = "There was an issue logging in. Please check username and password and try again."
+                render 'sessions/new'
+            end
+        else
+            flash[:alert] = "There was an issue logging in. Please check username and password and try again."
+            render 'sessions/new'
+        end
     end
 
     def destroy
