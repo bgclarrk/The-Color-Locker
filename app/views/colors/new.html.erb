@@ -4,9 +4,10 @@
     </div>
 </div>
 <br>
+<%= render "shared/errors" %>
 <div class="row">
     <div class="col-12">
-        <%= form_for @color, url: { action: "create" } do |f| %>
+        <%= form_for @color, url: { action: 'create' } do |f| %>
             <div class="text-center">
                 <%= f.color_field :hexidecimal, name: "color[hexidecimal][]", value: "#2668E3" %>
                 <%= f.color_field :hexidecimal, name: "color[hexidecimal][]", value: "#21206F" %>

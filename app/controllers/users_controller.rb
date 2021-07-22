@@ -10,6 +10,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to projects_path
         else
+            flash[:errors] = @user.errors.full_messages
             render :new
         end
     end

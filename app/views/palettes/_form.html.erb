@@ -1,0 +1,8 @@
+<%= form_for @palette do |f| %>
+    <%= f.text_field :name, placeholder: "Palette Name", class: "form-control" %>
+    <br>
+    <%= f.collection_select :project_ids, Project.all, :id, :title, {label: 'Project', :include_blank => ("Select Project"), hide_label: true}, {class: "dropdown menu"} %>
+    <div class="text-center">
+        <%= f.submit class: "btn btn-primary" %>
+    </div>
+<% end %>

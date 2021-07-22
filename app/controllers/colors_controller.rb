@@ -7,7 +7,7 @@ class ColorsController < ApplicationController
             @color = Color.new
             @color.palette = Palette.find_by_id(params[:palette_id])
         else
-            flash[:alert] = "We could not find that palette."
+            flash[:errors] = @color.errors.full_messages
             redirect_to palettes_path()
         end
     end
@@ -20,7 +20,7 @@ class ColorsController < ApplicationController
             end
             redirect_to palette_path(params[:palette_id])
         else
-            flash[:alert] = "We could not find that palette. Please try again."
+            flash[:errors] = @color.errors.full_messages
             render palettes_path
         end
     end
@@ -36,11 +36,11 @@ class ColorsController < ApplicationController
                 color.save
                 redirect_to palette_path(params[:palette_id])
             else
-                flash[:alert] = "There was an error. Please try again."
+                flash[:errors] = @color.errors.full_messages
                 redirect_to palettes_path
             end
         else
-            flash[:alert] = "We could not find that palette. Please try again."
+            flash[:errors] = @color.errors.full_messages
             redirect_to palettes_path
         end
     end

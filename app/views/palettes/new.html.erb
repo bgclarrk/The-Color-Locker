@@ -3,15 +3,9 @@
         <h1>Create Palette</h1>
     </div>
 </div>
+<%= render "shared/errors" %>
 <div class="row">
     <div class="col-12">
-        <%= form_for @palette do |f| %>
-            <%= f.text_field :name, placeholder: "Palette Name", class: "form-control" %>
-            <br>
-            <%= f.collection_select :project_ids, Project.all, :id, :title, {label: 'Project', :include_blank => ("Select Project"), hide_label: true}, {class: "dropdown menu"} %>
-            <div class="text-center">
-                <%= f.submit class: "btn btn-primary" %>
-            </div>
-        <% end %>
+        <%= render 'form' %>
     </div>
 </div>
