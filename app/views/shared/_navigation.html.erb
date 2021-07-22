@@ -8,7 +8,7 @@
     <ul class="navbar-nav mr-auto">
         <% if session[:user_id] %>
             <li class="nav-item">
-                <a class="nav-link" href="<%= projects_path %>">All Projects</a>
+                <a class="nav-link" href="<%= new_palette_path %>">New Palette</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<%= new_project_path %>">New Project</a>
@@ -17,7 +17,7 @@
                 <a class="nav-link" href="<%= palettes_path %>">All Palettes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<%= new_palette_path %>">New Palette</a>
+                <a class="nav-link" href="<%= projects_path %>">All Projects</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<%= logout_path %>">Logout</a>
