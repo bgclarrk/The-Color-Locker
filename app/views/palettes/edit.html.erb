@@ -20,7 +20,7 @@
 <div class="row">
     <div class="col-12 text-center">
         <%= form_tag palette_path(@palette), method: "delete" do %>
-            <%= submit_tag "Delete Palette", class: "btn btn-outline-danger" %>
+            <%= submit_tag "Delete Palette", class: "btn btn-outline-danger", data: { confirm: "Are you sure?" } %>
         <% end %>
     </div>
 </div>

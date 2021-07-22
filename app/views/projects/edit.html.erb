@@ -11,6 +11,8 @@
             <br>
             <%= f.text_area :description, placeholder: @project.description, class: "form-control" %>
             <br>
+            <%= f.collection_select :palette_id, Palette.all, :id, :name, {label: 'Palette', :include_blank => ("Select Palette"), hide_label: true}, {class: "dropdown menu"} %>
+            <br>
             <div class="text-center">
                 <%= f.submit class: "btn btn-primary" %>
             </div>
@@ -21,7 +23,7 @@
 <div class="row">
     <div class="col-12 text-center">
         <%= form_tag project_path(@project), method: "delete" do %>
-            <%= submit_tag "Delete Project", class: "btn btn-outline-danger" %>
+            <%= submit_tag "Delete Project", class: "btn btn-outline-danger", data: { confirm: "Are you sure?" } %>
         <% end %>
     </div>
 </div>

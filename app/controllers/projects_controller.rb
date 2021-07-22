@@ -27,9 +27,11 @@ class ProjectsController < ApplicationController
     end
 
     def update
+        palette = Palette.find_by_id(params[:project][:palette_id])
         if session[:user_id] == @project.user_id
             @project.title = params[:project][:title]
             @project.description = params[:project][:description]
+            @project.palette = palette
             @project.save
             redirect_to project_path(@project)
         else
