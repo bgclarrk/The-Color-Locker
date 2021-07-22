@@ -2,6 +2,13 @@
     <div class="column-lg text-center">
         <h1>Signup</h1>
     </div>
+    <% if flash[:errors].present? %>
+        <ul>
+            <% flash[:errors].each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+    <% end %>
     <div class="column-lg text-center">
         <%= form_for @user, url: '/signup' do |f| %>
             <%= f.text_field :email, placeholder: "Email", class: "form-control" %>

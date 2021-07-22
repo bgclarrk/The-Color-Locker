@@ -3,7 +3,13 @@
         <h1>Edit Palette</h1>
     </div>
 </div>
-<%= render "shared/errors" %>
+<% if flash[:errors].present? %>
+    <ul>
+        <% flash[:errors].each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+    </ul>
+<% end %>
 <div class="row">
     <div class="col-12">
         <%= render 'form' %>

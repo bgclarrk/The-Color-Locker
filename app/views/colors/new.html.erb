@@ -4,7 +4,13 @@
     </div>
 </div>
 <br>
-<%= render "shared/errors" %>
+<% if flash[:errors].present? %>
+    <ul>
+        <% flash[:errors].each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+    </ul>
+<% end %>
 <div class="row">
     <div class="col-12">
         <%= form_for @color, url: { action: 'create' } do |f| %>
