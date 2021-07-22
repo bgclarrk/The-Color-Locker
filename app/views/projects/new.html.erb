@@ -11,6 +11,8 @@
             <br>
             <%= f.text_area :description, placeholder: "Project Description", class: "form-control" %>
             <br>
+            <%= f.collection_select :palette_id, Palette.all, :id, :name, {label: 'Palette', :include_blank => ("Select Palette"), hide_label: true}, {class: "dropdown menu"} %>
+            <br>
             <div class="text-center">
                 <%= f.submit class: "btn btn-primary" %>
             </div>

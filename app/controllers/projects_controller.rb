@@ -10,9 +10,10 @@ class ProjectsController < ApplicationController
         @project = Project.new
     end
 
-    def create # Project needs a palette to be saved - Need to find a solution
+    def create
         @project = Project.create(project_params)
         @project.user = User.find_by_id(session[:user_id])
+        @project.palette = Palette.find_by_id(params[:project][:palette_id])
         if @project.save
             redirect_to project_path(@project)
         else
