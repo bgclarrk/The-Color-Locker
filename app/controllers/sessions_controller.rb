@@ -5,16 +5,16 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = User.find_by(username: params[:user][:username])
-            if user.authenticate(params[:user][:password])
-                session[:user_id] = user.id
+        @user = User.new
+        if @user = User.find_by(username: params[:user][:username])
+            if @user.authenticate(params[:user][:password])
+                session[:user_id] = @user.id
                 redirect_to '/projects'
-            else
-                flash[:errors] = user.errors.full_messages
-                render 'sessions/new'
             end
-        flash[:errors] = user.errors.full_messages
-        render 'sessions/new'
+        else
+            flash[:errors] = "There was an error logging in. Please check your username and password."
+            render 'sessions/new'
+        end
     end
 
     def destroy
