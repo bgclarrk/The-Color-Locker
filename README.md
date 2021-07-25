@@ -1,24 +1,10 @@
-# README
+# The Color Locker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup ENV variables
 
-Things you may want to cover:
+Create a .env file in the root directory and add your GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET values.
 
-* Ruby version
+GOOGLE_CLIENT_ID=<your id here>
+GOOGLE_CLIENT_SECRET=<your secret here>
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Objectives

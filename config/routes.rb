@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+  get '/auth/failure', to: redirect('/auth/google_oath2')
+
 end
