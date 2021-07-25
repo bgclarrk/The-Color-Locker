@@ -4,16 +4,16 @@
 
 Create a .env file in the root directory and add your GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET values.
 
-GOOGLE_CLIENT_ID=<your id here>
-GOOGLE_CLIENT_SECRET=<your secret here>
+    GOOGLE_CLIENT_ID=<your id here>
+    GOOGLE_CLIENT_SECRET=<your secret here>
 
 ## Objective
 
-    Give users a single place to store color branding information.
+Give users a single place to store color branding information.
 
 ## Description
 
-    This is an application where a user can create multiple projects and color palettes. These can be associated to keep track of different color palettes for different projects. It can be for any design purposes such as building websites, graphic design branding, home renovations, etc..
+This is an application where a user can create multiple projects and color palettes. These can be associated to keep track of different color palettes for different projects. It can be for any design purposes such as building websites, graphic design branding, home renovations, etc..
 
 ## License
 
