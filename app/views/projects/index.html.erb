@@ -7,7 +7,7 @@
 <% if @projects.present? %>
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h3>Here are your current projects</h3>
+            <h3>Here are the current projects</h3>
         </div>
     </div>
     <br>
@@ -16,11 +16,14 @@
             <div class="card" style="width: 27rem;">
                 <div class="card-body">
                     <h5 class="card-title"><%= project.title %></h5>
+                    <h6 class="card-title">Created by: <%= project.user.username %></h6>
                     <p class="card-text"><%= project.description %></p>
                     <div class="row">
                         <div class="col-8 text-left">
                             <a href="<%= project_path(project) %>" class="card-link">View</a>
-                            <a href="<%= edit_project_path(project) %>" class="card-link">Edit</a>
+                            <% if project.user.id == session[:user_id] %>
+                                <a href="<%= edit_project_path(project) %>" class="card-link">Edit</a>
+                            <% end %>
                         </div>
                         <div class="col-4 text-right">
                             <% if project.palette.present? %>
@@ -51,6 +54,6 @@
 <% end %>
 <div class="row">
     <div class="col-lg text-center">
-        <%= link_to "Create a new Project", new_project_path %>
+        <%= link_to "Create a new Palette", new_palette_path %>
     </div>
 </div>
