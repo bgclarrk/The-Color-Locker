@@ -36,3 +36,25 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+User ------< Project >------- Palette ------< Color
+
+User
+has_many projects
+has_many palettes through projects
+
+Project
+user_id
+palette_id
+belongs_to user
+belongs_to palette
+
+Palette
+has_many projects
+has_many users through projects
+has_many colors
+
+Color
+palette_id
+belongs_to palette

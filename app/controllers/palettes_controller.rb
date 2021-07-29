@@ -13,6 +13,7 @@ class PalettesController < ApplicationController
     def create
         @palette = Palette.new
         @palette.name = params[:palette][:name]
+        byebug
         @palette.user = current_user
         if @palette.save
             redirect_to @palette

@@ -5,8 +5,8 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new
-        if @user.save
+        @user = User.create(user_params)
+        if @user
             session[:user_id] = @user.id
             redirect_to projects_path
         else
