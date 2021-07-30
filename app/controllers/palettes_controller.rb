@@ -11,10 +11,9 @@ class PalettesController < ApplicationController
     end
 
     def create
-        @palette = Palette.new
-        @palette.name = params[:palette][:name]
-        if @palette.save
-            redirect_to @palette
+        @palette = Palette.create(palette_params)
+        if @palette
+            redirect_to palette_path(@palette)
         else
             flash.now[:errors] = @palette.errors.full_messages
             render new_palette_path
@@ -30,9 +29,8 @@ class PalettesController < ApplicationController
     end
 
     def update
-        if session[:user_id] == @palette.user_id
-            @palette.name = params[:palette][:name]
-            @palette.save
+        @palette.name = params[:palette][:name]
+        if @palette.save
             redirect_to palette_path(@palette)
         else
             flash.now[:errors] = @palette.errors.full_messages
