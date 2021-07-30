@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
                 redirect_to '/projects'
             end
         else
-            flash[:errors] = "There was an error logging in. Please check your username and password."
+            flash.now[:errors] = "There was an error logging in. Please check your username and password."
             render 'sessions/new'
         end
     end

@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
         if @project.save
             redirect_to project_path(@project)
         else
-            flash[:errors] = @project.errors.full_messages
+            flash.now[:errors] = @project.errors.full_messages
             render new_project_path
         end
     end
@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
             @project.save
             redirect_to project_path(@project)
         else
-            flash[:errors] = @project.errors.full_messages
+            flash.now[:errors] = @project.errors.full_messages
             render edit_project_path(@project)
         end
     end

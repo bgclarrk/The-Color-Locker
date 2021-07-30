@@ -16,7 +16,7 @@ class PalettesController < ApplicationController
         if @palette.save
             redirect_to @palette
         else
-            flash[:errors] = @palette.errors.full_messages
+            flash.now[:errors] = @palette.errors.full_messages
             render new_palette_path
         end
     end
@@ -35,7 +35,7 @@ class PalettesController < ApplicationController
             @palette.save
             redirect_to palette_path(@palette)
         else
-            flash[:errors] = @palette.errors.full_messages
+            flash.now[:errors] = @palette.errors.full_messages
             render edit_palette_path(@palette)
         end
     end

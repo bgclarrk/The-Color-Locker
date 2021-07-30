@@ -20,7 +20,7 @@ class ColorsController < ApplicationController
             end
             redirect_to palette_path(params[:palette_id])
         else
-            flash[:errors] = @color.errors.full_messages
+            flash.now[:errors] = @color.errors.full_messages
             render palettes_path
         end
     end
