@@ -58,3 +58,5 @@ has_many colors
 Color
 palette_id
 belongs_to palette
+
+Error creating new palette
