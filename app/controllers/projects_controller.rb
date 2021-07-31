@@ -6,6 +6,10 @@ class ProjectsController < ApplicationController
         @projects = Project.all
     end
 
+    def authored
+        @projects = Project.authored(session[:user_id])
+    end
+
     def new
         @project = Project.new
     end
