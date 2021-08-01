@@ -1,10 +1,37 @@
 <% if @projects.present? %>
-    <h1>Here are the projects you authored</h1>
-<ul>
-    <% @projects.each |project| %>
-        <li><%= link_to project.title, project_path(project) %></li>
-    <% end %>
-</ul>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h3>Here are your current projects</h3>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <% @projects.each do |project| %>
+            <div class="card" style="width: 27rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><%= project.title %></h5>
+                    <h6 class="card-title">Created by: <%= project.user.username %></h6>
+                    <p class="card-text"><%= project.description %></p>
+                    <div class="row">
+                        <div class="col-8 text-left">
+                            <a href="<%= project_path(project) %>" class="card-link">View</a>
+                            <% if project.user.id == session[:user_id] %>
+                                <a href="<%= edit_project_path(project) %>" class="card-link">Edit</a>
+                            <% end %>
+                        </div>
+                        <div class="col-4 text-right">
+                            <% if project.palette.present? %>
+                                <%= link_to project.palette.name, palette_path(project.palette) %>
+                            <% else %>
+                                (No Palette)
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <br>
 <% else %>
     <h1>You don't have any projects yet</h1>
 <% end %>

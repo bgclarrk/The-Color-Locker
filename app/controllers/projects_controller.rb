@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
     end
 
     def authored
-        @projects = Project.authored(session[:user_id])
+        @projects = Project.where(user_id: session[:user_id])
     end
 
     def new

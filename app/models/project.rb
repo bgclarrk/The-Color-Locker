@@ -6,8 +6,4 @@ class Project < ApplicationRecord
 
     scope :authored, -> (user_id) { where("user_id: ?", user_id) }
 
-    def self.authored(user_id)
-        where("user_id: ?", user_id)
-    end
-
 end
